@@ -44,7 +44,7 @@ const glassConfig = {
 };
 
 const sphereConfig = {
-  radius: 0.84,
+  radius: 0.58,
   widthSegments: 82,
   heightSegments: 70,
   scale: 1.91,
@@ -56,18 +56,18 @@ const sphereConfig = {
   autoRotZ: 0,
   wireframe: false,
   visible: true,
-  cameraZ: 19.8,
-  cameraY: 5.8,
-  bounceHeight: 6.8,
+  cameraZ: 13.4,
+  cameraY: 7.6,
+  bounceHeight: 2.6,
 };
 
 const gridConfig = {
-  size: 28,
+  size: 19.5,
   divisions: 4,
-  color1: '#ff6262',
-  color2: '#ffffff',
-  lineWidth: 1.5,
-  y: -3.8,
+  color1: '#f20404',
+  color2: '#a1a1a1',
+  lineWidth: 1,
+  y: -0.74,
   visible: true,
 };
 
