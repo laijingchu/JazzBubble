@@ -228,6 +228,13 @@ pre {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
   font-size: 0.72rem;
   line-height: 1.6;
+  transition: background 0.08s ease, border-color 0.08s ease, color 0.08s ease;
+}
+
+#controls-tip kbd.active {
+  background: rgba(255, 255, 255, 0.55);
+  border-color: rgba(255, 255, 255, 0.8);
+  color: #0f172a;
 }
 
 .tip-sound {

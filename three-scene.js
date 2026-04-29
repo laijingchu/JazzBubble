@@ -316,7 +316,7 @@ export function initThreeScene(shaderCanvas, sphereConfig, glassConfig, gridConf
     heldNoteCount++;
     if (heldNoteCount === 1) {
       gsap.killTweensOf(scaleBoost);
-      gsap.to(scaleBoost, { v: 0.2, duration: 0.08, ease: 'power1.out' });
+      gsap.to(scaleBoost, { v: -0.2, duration: 0.08, ease: 'power1.out' });
     }
   }
 
@@ -402,8 +402,16 @@ export function initThreeScene(shaderCanvas, sphereConfig, glassConfig, gridConf
     const cell = KEY_MAP[key];
     if (!cell || activeNotes[key]) return;
     await ensureAudio();
-    const note = goToCell(cell.col, cell.row);
-    if (note) startNote(key, note);
+    const alreadyHere = currentCell?.col === cell.col && currentCell?.row === cell.row;
+    const note = goToCell(cell.col, cell.row) ?? NOTES_GRID[cell.col + cell.row * 4];
+    startNote(key, note);
+    if (alreadyHere) {
+      const height = sphereConfig.bounceHeight;
+      gsap.killTweensOf(bounce);
+      gsap.timeline()
+        .to(bounce, { y: height, duration: 0.2 + height * 0.02, ease: 'power2.out' })
+        .to(bounce, { y: 0, duration: 0.5 + height * 0.04, ease: 'bounce.out' });
+    }
   });
 
   window.addEventListener('keyup', (e) => {

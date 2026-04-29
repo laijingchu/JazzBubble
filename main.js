@@ -307,6 +307,23 @@ const controlsTip = document.getElementById('controls-tip');
 const dismissTip = document.getElementById('dismiss-tip');
 dismissTip.addEventListener('click', () => controlsTip.classList.add('hidden'));
 
+function keyToken(e) {
+  if (e.code === 'Space') return 'Space';
+  if (e.key.startsWith('Arrow')) return e.key;
+  return e.key.toLowerCase();
+}
+function tipKbd(token) {
+  return controlsTip.querySelector(`kbd[data-key="${token}"]`);
+}
+window.addEventListener('keydown', (e) => {
+  const el = tipKbd(keyToken(e));
+  if (el) el.classList.add('active');
+});
+window.addEventListener('keyup', (e) => {
+  const el = tipKbd(keyToken(e));
+  if (el) el.classList.remove('active');
+});
+
 copyBtn.addEventListener('click', () => {
   navigator.clipboard.writeText(codeBlock.textContent).then(() => {
     copyBtn.textContent = 'Copied!';
