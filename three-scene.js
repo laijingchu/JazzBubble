@@ -365,23 +365,15 @@ export function initThreeScene(shaderCanvas, sphereConfig, glassConfig, gridConf
       lastSpaceTime = now;
       const height = doubleTap ? sphereConfig.bounceHeight * 2 : sphereConfig.bounceHeight;
       await ensureAudio();
+      if (currentCell) {
+        const note = NOTES_GRID[currentCell.col + currentCell.row * 4];
+        keyDown(note, { velocity: 0.7 });
+        setTimeout(() => keyUp(note), 400);
+      }
       gsap.killTweensOf(bounce);
-      let impactFired = false;
       gsap.timeline()
         .to(bounce, { y: height, duration: 0.2 + height * 0.02, ease: 'power2.out' })
-        .to(bounce, {
-          y: 0, duration: 0.5 + height * 0.04, ease: 'bounce.out',
-          onUpdate() {
-            if (!impactFired && bounce.y < height * 0.04) {
-              impactFired = true;
-              if (currentCell) {
-                const note = NOTES_GRID[currentCell.col + currentCell.row * 4];
-                keyDown(note, { velocity: 0.7 });
-                setTimeout(() => keyUp(note), 400);
-              }
-            }
-          },
-        });
+        .to(bounce, { y: 0, duration: 0.5 + height * 0.04, ease: 'bounce.out' });
       return;
     }
 
