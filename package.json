@@ -12,8 +12,11 @@
     "vite": "^5.2.0"
   },
   "dependencies": {
+    "@tonejs/piano": "^0.2.1",
+    "events": "^3.3.0",
     "gsap": "^3.15.0",
     "shaders": "^2.5.109",
+    "three": "^0.184.0",
     "tweakpane": "^4.0.5"
   }
 }

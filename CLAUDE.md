@@ -16,6 +16,7 @@ A running log of decisions, conventions, and gotchas landed throughout the proje
 Format: `- YYYY-MM-DD — <decision/learning>. Why: <reason>.`
 
 <!-- Add entries below -->
+- 2026-04-29 — Whenever a config object (e.g. `swirlConfig`, `glassConfig`, `boxConfig`) gains, loses, or renames a property, update the Tweakpane bindings in `setupUI()` to match exactly. Why: the Tweakpane is the only UI for tuning these values; drift makes properties effectively dead/invisible.
 
 ## Project
 

@@ -10,7 +10,15 @@
 </head>
 
 <body>
+  <div id="loading-screen">
+    <div class="loader-inner">
+      <div class="loader-spinner"></div>
+      <p>Loading piano samples…</p>
+    </div>
+  </div>
+
   <canvas id="shader-canvas"></canvas>
+  <canvas id="three-canvas"></canvas>
   <div id="code-modal" class="hidden">
     <div class="modal-content">
       <div class="modal-header">
@@ -20,6 +28,20 @@
       <pre><code id="code-block"></code></pre>
       <button id="copy-btn">Copy to Clipboard</button>
     </div>
+  </div>
+
+  <div id="controls-tip">
+    <button id="dismiss-tip" aria-label="Dismiss">&times;</button>
+    <p class="tip-sound">🔊 Click anywhere to enable sound</p>
+    <ul>
+      <li><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd><kbd>4</kbd> &mdash; row 4 notes</li>
+      <li><kbd>Q</kbd><kbd>W</kbd><kbd>E</kbd><kbd>R</kbd> &mdash; row 3 notes</li>
+      <li><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><kbd>F</kbd> &mdash; row 2 notes</li>
+      <li><kbd>Z</kbd><kbd>X</kbd><kbd>C</kbd><kbd>V</kbd> &mdash; row 1 notes</li>
+      <li><kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd> &mdash; move (hold to repeat)</li>
+      <li><kbd>Space</kbd> &mdash; bounce &amp; play current note</li>
+      <li><span class="tip-mouse">Mouse click</span> &mdash; navigate to cell</li>
+    </ul>
   </div>
 
   <script type="module" src="/main.js"></script>
