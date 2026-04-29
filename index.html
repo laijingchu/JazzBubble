@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shaders Blob Mixer</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <canvas id="shader-canvas"></canvas>
+  <div id="code-modal" class="hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Exported Code</h2>
+        <button id="close-modal">&times;</button>
+      </div>
+      <pre><code id="code-block"></code></pre>
+      <button id="copy-btn">Copy to Clipboard</button>
+    </div>
+  </div>
+
+  <script type="module" src="/main.js"></script>
+</body>
+
+</html>
