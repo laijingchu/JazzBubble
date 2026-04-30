@@ -316,7 +316,7 @@ export function initThreeScene(shaderCanvas, sphereConfig, glassConfig, gridConf
     heldNoteCount++;
     if (heldNoteCount === 1) {
       gsap.killTweensOf(scaleBoost);
-      gsap.to(scaleBoost, { v: -0.2, duration: 0.08, ease: 'power1.out' });
+      gsap.to(scaleBoost, { v: -0.5, duration: 0.005, ease: 'power1.out' });
     }
   }
 
@@ -334,6 +334,22 @@ export function initThreeScene(shaderCanvas, sphereConfig, glassConfig, gridConf
   const COLS = gridConfig.divisions;
   const ROWS = gridConfig.divisions;
 
+  const SPIN_AXIS = new THREE.Vector3(0, 1, 0);
+  function spinOnMove() {
+    const obj = { v: 0 };
+    let last = 0;
+    gsap.to(obj, {
+      v: Math.PI * 2,
+      duration: 0.7,
+      ease: 'power2.out',
+      onUpdate() {
+        const d = obj.v - last;
+        last = obj.v;
+        sphere.rotateOnWorldAxis(SPIN_AXIS, d);
+      },
+    });
+  }
+
   function goToCell(col, row) {
     col = Math.max(0, Math.min(COLS - 1, col));
     row = Math.max(0, Math.min(ROWS - 1, row));
@@ -344,6 +360,7 @@ export function initThreeScene(shaderCanvas, sphereConfig, glassConfig, gridConf
       x: (col + 0.5) * cellW - gridConfig.size / 2,
       z: gridConfig.size / 2 - (row + 0.5) * cellW,
     };
+    spinOnMove();
     return NOTES_GRID[col + row * 4];
   }
 
